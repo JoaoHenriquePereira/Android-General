@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HelpActivity"  
+    android:layout_weight="1">
+
+       <!-- Sliding Panel -->     
+		<LinearLayout
+		    android:id="@+id/headerPanel"
+                
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="left"
+                android:orientation="vertical"
+			    android:background="@color/color_bg" >
+        
+        		<RelativeLayout
+		            android:layout_width="match_parent"
+		            android:layout_height="50dp"
+		            android:background="@drawable/gradient_blue" >
+
+		          	<View
+		                android:id="@+id/header_vertical_divider"
+		                android:layout_width="2dp"
+		                android:layout_height="fill_parent"
+		                android:layout_alignParentTop="true"
+		                android:layout_marginLeft="15dp"
+		                android:layout_toRightOf="@+id/backViewButton"
+		                android:background="@drawable/gradient_menu" />
+  
+			            <ImageView
+			                android:id="@+id/backViewButton"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_alignParentLeft="true"
+			                android:layout_centerVertical="true"
+			                android:layout_marginLeft="15dp"
+			                android:clickable="true"
+			                android:contentDescription="@string/description"
+			                android:src="@drawable/ic_back"
+			                android:visibility="visible" />
+	
+  				</RelativeLayout>
+        		<View
+			        android:layout_width="fill_parent"
+			        android:layout_height="5dip"
+			        android:background="@drawable/gradient_dropshadow">
+			    </View>
+			    
+        	<TextView
+			android:id="@+id/help_tv"
+			android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:textColor="@color/grey_seekbar"
+		   	android:padding="10dp"
+			android:textSize="16sp"
+			android:text="@string/help"
+			android:gravity="center"/>
+
+		</LinearLayout>
+		
+		
+</RelativeLayout>

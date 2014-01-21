@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calendar</string>
+    <string name="action_settings">Settings</string>
+	<string name="menu_title">MENU</string>
+	<string name="description">Description</string>
+    <string name="presentation">Hello I\'m João Henrique Pereira</string>
+    <string name="nodata">It seems you don\'t have an active internet connection :(</string>
+    <string name="help">Stuff I have no idea about is here!</string>
+    <string name="averages">Averages</string>
+    <string name="calendar_title">Your Calendar</string>
+</resources>
