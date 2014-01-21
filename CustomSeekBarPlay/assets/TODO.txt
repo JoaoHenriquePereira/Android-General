@@ -1,2 +1,0 @@
-- Adapt to smaller layouts
-- Cleanup Drawables
