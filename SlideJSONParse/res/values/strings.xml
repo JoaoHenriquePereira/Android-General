@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SlideJSON</string>
+    <string name="action_settings">Settings</string>
+    <string name="imageview_description">Image Thumbnail</string>
+    <string name="menu_title">MENU</string>
+    <string name="description">Description</string>
+    <string name="feedobj_type_string">Feed object type</string>
+    <string name="feedobj_poster_string">Feed object poster</string>
+    <string name="feedobj_avatar_string">Feed object avatar</string>
+    <string name="nodata">No Internet :(</string>
+    <string name="presentation">Hello I\'m João Henrique Pereira.</string>
+</resources>

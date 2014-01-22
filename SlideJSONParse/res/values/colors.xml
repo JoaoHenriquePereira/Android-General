@@ -1,0 +1,16 @@
+<resources>
+    <color name="grey_bggrad_light">#625c59</color>
+    <color name="grey_bggrad_dark">#544f4c</color>
+	<color name="grey_menugrad_light">#7d7571</color>
+	<color name="grey_menugrad_dark">#423c39</color>
+	<color name="grey_button_text">#888888</color>
+	<color name="grey_button_hover">#cccccc</color>
+	<color name="grey_separator_light">#3b3633</color>
+	<color name="grey_separator_dark">#000000</color>
+	<color name="grey_dropshadow_light">#103b3633</color>
+	<color name="grey_dropshadow_dark">#000000</color>
+	<color name="logo_blue">#64b9fa</color>
+	<color name="blue_button_light">#3296d8</color>
+	<color name="blue_button_dark">#025a84</color>
+</resources>
+        

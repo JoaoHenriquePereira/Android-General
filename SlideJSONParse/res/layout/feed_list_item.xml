@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <RelativeLayout 
+        android:id="@+id/infoHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_container">
+	
+		<ImageView
+		    android:id="@+id/feedobj_poster"
+		    android:contentDescription="@string/feedobj_poster_string"
+		    android:layout_width="wrap_content"
+		    android:layout_height="fill_parent"
+		    android:textSize="20sp"/>
+	
+
+		<ImageView
+		    android:id="@+id/feedobj_avatar"
+		    android:contentDescription="@string/feedobj_avatar_string"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_toRightOf="@id/feedobj_poster"
+		    android:layout_alignParentTop="true"
+		    android:paddingLeft="@dimen/padding_feed_item_list"/>
+		
+		<ImageView
+		    android:id="@+id/feedobj_type"
+		    android:contentDescription="@string/feedobj_type_string"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_toRightOf="@id/feedobj_avatar"
+		    android:paddingLeft="@dimen/padding_feed_item_list"/>
+
+		<View
+		   	android:id="@+id/separator"
+		   	android:layout_width="fill_parent"
+		    android:layout_height="2dp"
+		    android:layout_toRightOf="@id/feedobj_poster"
+		    android:background="@drawable/gradient_separator"
+		    android:layout_below="@id/feedobj_avatar"
+		    android:layout_marginTop="@dimen/padding_feed_item_list"
+		    android:layout_marginLeft="@dimen/padding_feed_item_list"
+		    android:layout_marginRight="@dimen/padding_feed_item_list" />
+		
+		<LinearLayout 
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:layout_toRightOf="@id/feedobj_poster"
+		    android:layout_below="@id/separator"
+			android:background="@drawable/hollow_container"
+			android:layout_margin="@dimen/padding_feed_item_list">
+			
+			<TextView
+			    android:id="@+id/feedobj_title"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:textColor="@android:color/white"
+			    android:textSize="12sp"
+			    android:padding="@dimen/padding_feed_item_list"/>
+		</LinearLayout>
+	</RelativeLayout>
+</RelativeLayout>

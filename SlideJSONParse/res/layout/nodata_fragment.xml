@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/square_container"
+	android:layout_alignParentTop="true">
+	<TextView 
+		android:id="@+id/nodata_tv"
+		android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/nodata" 
+	    android:textColor="@android:color/white"
+		android:textSize="12sp"
+		android:textStyle="bold"
+		android:drawableLeft="@drawable/warning"
+		android:gravity="center"
+		android:layout_centerInParent="true"/>
+</RelativeLayout>

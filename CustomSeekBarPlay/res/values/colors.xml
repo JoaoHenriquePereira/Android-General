@@ -1,0 +1,24 @@
+<resources>
+    <color name="grey_bggrad_light">#adacbc</color>
+    <color name="grey_bggrad_dark">#747f7c</color>
+	<color name="grey_menugrad_light">#7d7571</color>
+	<color name="grey_menugrad_dark">#423c39</color>
+	<color name="grey_button_text">#888888</color>
+	<color name="grey_button_hover">#cccccc</color>
+	<color name="grey_separator_light">#3b3633</color>
+	<color name="grey_separator_dark">#000000</color>
+	<color name="grey_dropshadow_light">#103b3633</color>
+	<color name="grey_dropshadow_dark">#000000</color>
+	<color name="grey_seekbar">#adb6bc</color>
+	<color name="green">#8ba62c</color>
+	<color name="fertile_blue">#00829c</color>
+	<color name="color_bg">#eff3f3</color>
+	<color name="period_red">#e43939</color>
+	<color name="blue_button_light">#697373</color>
+	<color name="blue_button_dark">#697373</color>
+	<color name="progress_gray">#FFD8D8D8</color>
+    <color name="progress_gray_dark">#FF383838</color>
+     <color name="red">#ffe2231a</color>
+     <color name="dark_red">#ff510209</color>
+</resources>
+        
