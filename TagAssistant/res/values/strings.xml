@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Taginator</string>
+    <string name="action_settings">Settings</string>
+    <string name="action1">Manage Tags</string>
+    <string name="action2">Filters</string>
+	<string name="heading_dismissable_sets">Sets</string>
+	<string name="heading_dismissable_tags">Set -> Tags</string>
+	<string name="new_tag">Add Tag</string>
+	<string name="new_set">Add Set</string>
+	<string name="new_tag_hint">Tag Name</string>
+	<string name="new_set_hint">Set Name</string>
+	<string name="tag_img_desc">Tag color</string>
+</resources>
