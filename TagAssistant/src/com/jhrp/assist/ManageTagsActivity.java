@@ -8,6 +8,7 @@ import com.jhrp.assist.db.SetDAO;
 import com.jhrp.assist.db.TagGroupDAO;
 import com.jhrp.assist.object.CaptureBundle;
 import com.jhrp.assist.object.InterBundle;
+import com.jhrp.assist.utils.Utils;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,14 +18,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-
-/**
- * Tag manager
- * 
- * @author João Pereira
- * @e-mail joaohrpereira@gmail.com
- */
-
 
 /**TODO
  * 
@@ -55,6 +48,7 @@ public class ManageTagsActivity extends FragmentActivity implements SetsFragment
 	private InterBundle mInterBundle;
 	private CaptureBundle mCaptureBundle;
 	private boolean fromCapture = false;
+	private String mNewTag;
 	
     /** Called when the activity is first created. */
     @Override
@@ -90,6 +84,14 @@ public class ManageTagsActivity extends FragmentActivity implements SetsFragment
             			mState--;
             			replaceState();
             			break;
+            		case 2: 
+            			mState--;
+            			replaceState();
+            			break;
+            		default:
+            			mState=0;
+            			replaceState();
+            			break;
             	}
             }
         });
@@ -111,14 +113,23 @@ public class ManageTagsActivity extends FragmentActivity implements SetsFragment
 
 	@Override
 	public void onDataPass(InterBundle i) {
-		//TODO Auto-generated method stub	
 		mState = i.getState();
 		mInterBundle = i;
 		replaceState();
 	}
 	
 	@Override
+	public void onDataPass(String i) {
+		mState=2;
+		mNewTag=i;
+		replaceState();
+	}
+	
+	@Override
 	public void onCaptureColor(CaptureBundle i) {
+		mCaptureBundle = i;
+		fromCapture = true;
+		mState = 1;
 		replaceState();
 	}
 	
@@ -142,14 +153,22 @@ public class ManageTagsActivity extends FragmentActivity implements SetsFragment
 					if(mTagsFragment == null){
 						mTagsFragment = new TagsFragment();
 						bundle.putInt("setnum", mInterBundle.getClickedItem());
+						bundle.putLong("settgid", mInterBundle.getClickedItemTGId());
 						bundle.putString("setname", mInterBundle.getClickedItemName());
 						mTagsFragment.setArguments(bundle);
 					} else {
 						bundle = mTagsFragment.getArguments();
 						bundle.putInt("setnum", mInterBundle.getClickedItem());
+						bundle.putLong("settgid", mInterBundle.getClickedItemTGId());
 						bundle.putString("setname", mInterBundle.getClickedItemName());
 					}
+				} else { //Save new color in DB
+					mTagGroupDAO.createTagGroup(mNewTag, 
+							mInterBundle.getClickedItemTGId(), 
+							Utils.convertScalarToString(mCaptureBundle.getmBlobColorRgba()), 
+							Utils.convertScalarToString(mCaptureBundle.getmBlobColorHsv()));
 				}
+				
 				fromCapture = false;
 		        ft.replace(R.id.contentLayout, mTagsFragment, TagsFragment.TAG);
 		        ft.addToBackStack(null);
@@ -186,6 +205,14 @@ public class ManageTagsActivity extends FragmentActivity implements SetsFragment
 	@Override
 	public void onResume(){
 		super.onResume();
+		
+		try {
+			mSetDAO.open();
+			mTagGroupDAO.open();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	  
 	@Override
@@ -196,8 +223,9 @@ public class ManageTagsActivity extends FragmentActivity implements SetsFragment
 	@Override
 	public void onDestroy() {
 	    super.onDestroy();
-	    mSetDAO.close();
-		mTagGroupDAO.close();
+	    //mSetDAO.close();
+		//mTagGroupDAO.close();
 	}
 
+	
 }

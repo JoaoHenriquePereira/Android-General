@@ -82,7 +82,7 @@ public class TagsFragment extends ListFragment {
 	    dismissableContainer = (ViewGroup) getView().findViewById(R.id.dismissable_container);
 
         mTags = mTagGroupDAO.getAllTagGroups();
-        
+
         /**
          * It might be useful to have the ids with the string in case you
          * have sets/tags with same name for some reason 
@@ -142,14 +142,10 @@ public class TagsFragment extends ListFragment {
 		        newEdit=(EditText)dialog.findViewById(R.id.newitem_edit);
 		        newEdit.setHint(getResources().getString(R.string.new_tag_hint));
 		        
-		        final InterBundle t = new InterBundle();
-		        t.setState(2);
-		        t.setClickedItemName(newEdit.getText().toString());
-		        
 		        okButton = (Button) dialog.findViewById(R.id.ok_button);
 		        okButton.setOnClickListener(new View.OnClickListener() {
 		            public void onClick(View v) {
-		            	passData(t);
+		            	passData(newEdit.getText().toString());
 		            	dialog.dismiss();
 		            }
 		        });
@@ -226,12 +222,13 @@ public class TagsFragment extends ListFragment {
 	}
 	
 	public interface OnDataPass {
-	    public void onDataPass(InterBundle i);
+	    public void onDataPass(String i);
 	}
 
-	private void updateList(){
-		
-       
+	@Override
+	public void onResume(){
+		super.onResume();
+		mAdapter.notifyDataSetChanged();
 	}
 	
 	@Override
@@ -240,7 +237,7 @@ public class TagsFragment extends ListFragment {
 	
 	}
 
-	public void passData(InterBundle i) {
+	public void passData(String i) {
 	    mCallback.onDataPass(i);
 	}
 	

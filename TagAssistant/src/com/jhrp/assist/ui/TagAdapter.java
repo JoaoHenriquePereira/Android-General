@@ -3,13 +3,20 @@ package com.jhrp.assist.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.opencv.core.Scalar;
+
 import com.jhrp.assist.R;
 import com.jhrp.assist.R.id;
 import com.jhrp.assist.R.layout;
 import com.jhrp.assist.db.TagGroupModel;
+import com.jhrp.assist.utils.Utils;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +35,7 @@ import android.widget.Toast;
 
 public class TagAdapter extends ArrayAdapter<TagGroupModel>
 {
-	private static final String TAG="FeedAdapter";
+	private static final String TAG="TagAdapter";
 	private ArrayList<TagGroupModel> objects;
 	private Context context;
 	private long id;
@@ -61,7 +68,13 @@ public class TagAdapter extends ArrayAdapter<TagGroupModel>
 				tagName = (TextView) v.findViewById(R.id.tagName);
 				tagColor = (ImageView) v.findViewById(R.id.tagColor);
 			}
-
+			Paint t = new Paint();
+			Scalar x = Utils.convertStringToScalar(i.getRgba());
+			t.setARGB((int)x.val[3], (int)x.val[0], (int)x.val[1], (int)x.val[2]);
+			
+			tagColor.setBackgroundColor(t.getColor());
+			tagName.setText(i.getTagName());
+			
 	       // FeedFragment.mImageFetcher.DisplayImage(i.show.images.poster.w120, obj_poster);
 	       // FeedFragment.mImageFetcher.DisplayImage(i.user.avatar.w80, obj_avatar);
 	       // obj_type.getLayoutParams().height = obj_avatar.getLayoutParams().height;//(int) convertPixelsToDp(obj_avatar.getLayoutParams().height,(Activity)context);

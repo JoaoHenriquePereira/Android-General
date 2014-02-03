@@ -14,26 +14,19 @@ import com.jhrp.assist.blob.ColorBlobDetector;
 
 public class CaptureBundle {
 	
-	private Mat                  mRgba;
-    private Scalar               mBlobColorRgba;
-    private ColorBlobDetector    mDetector;
+	private Scalar mBlobColorHsv;
+    private Scalar mBlobColorRgba;
     
-	public Mat getmRgba() {
-		return mRgba;
+	public Scalar getmBlobColorHsv() {
+		return mBlobColorHsv;
 	}
-	public void setmRgba(Mat mRgba) {
-		this.mRgba = mRgba;
+	public void setmBlobColorHsv(Scalar mBlobColorHsv) {
+		this.mBlobColorHsv = mBlobColorHsv;
 	}
 	public Scalar getmBlobColorRgba() {
 		return mBlobColorRgba;
 	}
 	public void setmBlobColorRgba(Scalar mBlobColorRgba) {
 		this.mBlobColorRgba = mBlobColorRgba;
-	}
-	public ColorBlobDetector getmDetector() {
-		return mDetector;
-	}
-	public void setmDetector(ColorBlobDetector mDetector) {
-		this.mDetector = mDetector;
 	}
 }

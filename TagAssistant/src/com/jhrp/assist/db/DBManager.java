@@ -23,8 +23,10 @@ public class DBManager extends SQLiteOpenHelper {
 	//Table TagGroup
 	public static final String TABLE_TAGGROUP = "tag_group";
 	public static final String COLUMN_TAGGROUP_ID = "_id";
+	public static final String COLUMN_TAGGROUP_SET_ID = "s_id";
 	public static final String COLUMN_TAGNAME = "name";
-	public static final String COLUMN_COLOR = "tag_color";
+	public static final String COLUMN_COLOR_RGB = "tag_color_rgb";
+	public static final String COLUMN_COLOR_HSV = "tag_color_hsv";
 	
 	private static final String DATABASE_NAME = "sets.db";
 	private static final int DATABASE_VERSION = 1;
@@ -34,17 +36,15 @@ public class DBManager extends SQLiteOpenHelper {
 			+ TABLE_SETS + "(" + COLUMN_SETS_ID
 			+ " integer primary key autoincrement, " + COLUMN_SETNAME
 			+ " text not null, " + COLUMN_SETTAGGROUPID
-			+ " integer not null);" 
-			+ " create table " + TABLE_TAGGROUP + "(" 
-            + COLUMN_TAGGROUP_ID + " integer,"
-            + COLUMN_TAGNAME + " text not null, "
-            + COLUMN_COLOR + " blob);";
+			+ " integer not null);"; 
 
 	private static final String DATABASE_CREATE_TAGGROUP = " create table " 
 			+ TABLE_TAGGROUP + "(" 
-            + COLUMN_TAGGROUP_ID + " integer,"
+            + COLUMN_TAGGROUP_ID + " integer primary key autoincrement, "
+            + COLUMN_TAGGROUP_SET_ID + " integer, "
             + COLUMN_TAGNAME + " text not null, "
-            + COLUMN_COLOR + " blob);";
+            + COLUMN_COLOR_HSV + " text, "
+            + COLUMN_COLOR_RGB + " text);";
 	
 	public DBManager(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

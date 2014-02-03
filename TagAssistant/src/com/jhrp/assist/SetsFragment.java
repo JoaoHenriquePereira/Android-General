@@ -241,8 +241,9 @@ public class SetsFragment extends ListFragment {
 	public void onListItemClick(ListView listView, View view, int position, long id) {
 		//TODO make it open tag group
 		InterBundle t = new InterBundle();
-		t.setClickedItem((int) id);
 		t.setState(1);
+		t.setClickedItem((int) id);
+		t.setClickedItemTGId(mSets.get((int)id).getSetTagGroupId());
 		t.setClickedItemName(mSets.get((int)id).getSetName());
 		passData(t);
 	}

@@ -10,8 +10,10 @@ package com.jhrp.assist.db;
 public class TagGroupModel {
 	
 	private long id;
+	private long s_id;
 	private String tagName;
-	private byte[] tagColor;
+	private String rgba;
+	private String hsv;
 	
 	public long getId() {
 		return id;
@@ -19,16 +21,29 @@ public class TagGroupModel {
 	public void setId(long id) {
 		this.id = id;
 	}
+	public long getS_id() {
+		return s_id;
+	}
+	public void setS_id(long s_id) {
+		this.s_id = s_id;
+	}
 	public String getTagName() {
 		return tagName;
 	}
 	public void setTagName(String tagName) {
 		this.tagName = tagName;
 	}
-	public byte[] getTagColor() {
-		return tagColor;
+	public String getRgba() {
+		return rgba;
 	}
-	public void setTagColor(byte[] tagColor) {
-		this.tagColor = tagColor;
+	public void setRgba(String rgb) {
+		this.rgba = rgb;
 	}
+	public String getHsv() {
+		return hsv;
+	}
+	public void setHsv(String hsv) {
+		this.hsv = hsv;
+	}
+	
 }

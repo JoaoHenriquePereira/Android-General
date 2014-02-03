@@ -194,6 +194,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnT
             Toast.makeText(this, mOpenCvCameraView.getEffect(), Toast.LENGTH_SHORT).show();*/
         	Intent intent = new Intent(this, ManageTagsActivity.class);
         	startActivity(intent);
+        	this.finish();
         }
         else if (item.getGroupId() == 2)
         {

@@ -1,9 +1,7 @@
 package com.jhrp.assist;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
-import java.util.ListIterator;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
@@ -55,6 +53,7 @@ public class CaptureColorFragment extends Fragment implements OnTouchListener, C
 
     private OnCaptureColor mCallback;
     
+    private boolean              mIsColorSelected = false;
     private Mat                  mRgba;
     private Scalar               mBlobColorRgba;
     private Scalar               mBlobColorHsv;
@@ -67,6 +66,7 @@ public class CaptureColorFragment extends Fragment implements OnTouchListener, C
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(getActivity()) {
         @Override
         public void onManagerConnected(int status) {
+        	
             switch (status) {
                 case LoaderCallbackInterface.SUCCESS:
                 {
@@ -99,8 +99,8 @@ public class CaptureColorFragment extends Fragment implements OnTouchListener, C
 		    	
 		    	final View v = inflater.inflate(R.layout.capturefrag_view, container, false);
     	
-    	//requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    	//getActivity().requestWindowFeature(Window.FEATURE_NO_TITLE);
+    	//getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         mOpenCvCameraView = (CameraBridgeViewBase) v.findViewById(R.id.frag_surface_view);
         mOpenCvCameraView.setCvCameraViewListener(this);
@@ -184,15 +184,13 @@ public class CaptureColorFragment extends Fragment implements OnTouchListener, C
 
         Imgproc.resize(mDetector.getSpectrum(), mSpectrum, SPECTRUM_SIZE);
 
-        touchedRegionRgba.release();
-        touchedRegionHsv.release();
-        
         CaptureBundle t = new CaptureBundle();
-		t.setmBlobColorRgba(mBlobColorRgba);
-		t.setmDetector(mDetector);
-		t.setmRgba(touchedRegionRgba);
+        t.setmBlobColorHsv(mBlobColorHsv);
+        t.setmBlobColorRgba(mBlobColorRgba);
 		passData(t);
         
+        touchedRegionRgba.release();
+        touchedRegionHsv.release();
         return false; // don't need subsequent touch events
     }
 
@@ -202,6 +200,12 @@ public class CaptureColorFragment extends Fragment implements OnTouchListener, C
     
     public void passData(CaptureBundle i) {
 	    mCallback.onCaptureColor(i);
+	}
+    
+    @Override
+	public void onAttach(Activity a) {
+	    super.onAttach(a);
+	    mCallback = (OnCaptureColor) a;
 	}
     
     private Scalar converScalarHsv2Rgba(Scalar hsvColor) {
@@ -214,7 +218,10 @@ public class CaptureColorFragment extends Fragment implements OnTouchListener, C
 
 	@Override
 	public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
-		return null;
+		mRgba = inputFrame.rgba();
+		
+		
+		return mRgba;
 	}
 
 }
