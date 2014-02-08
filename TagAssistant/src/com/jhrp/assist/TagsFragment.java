@@ -161,7 +161,6 @@ public class TagsFragment extends ListFragment {
 	
 	@Override
 	public void onListItemClick(ListView listView, View view, int position, long id) {
-		Log.e("fds",""+mTags.get((int)id).getTagName());
 	}
 
 	public void passData(String i) {

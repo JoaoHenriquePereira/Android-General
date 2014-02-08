@@ -150,55 +150,6 @@ public class SetsFragment extends ListFragment {
         });
         
         dismissableContainer.addView(newItemButton);
-        
-        if(items.size() != 0){ //We have sets
-        	/*for (int i = 0; i < mSets.size(); i++) {
-                final Button dismissableButton = new Button(this);
-                dismissableButton.setLayoutParams(new ViewGroup.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                dismissableButton.setText("Button " + (i + 1));
-                dismissableButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Toast.makeText(ManageTagsActivity.this,
-                                "Clicked " + ((Button) view).getText(),
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
-                // Create a generic swipe-to-dismiss touch listener.
-                dismissableButton.setOnTouchListener(new SwipeDismissTouchListener(
-                        dismissableButton,
-                        null,
-                        new SwipeDismissTouchListener.DismissCallbacks() {
-                            @Override
-                            public boolean canDismiss(Object token) {
-                                return true;
-                            }
-
-                            @Override
-                            public void onDismiss(View view, Object token) {
-                                dismissableContainer.removeView(dismissableButton);
-                            }
-                        }));
-                dismissableContainer.addView(dismissableButton);
-            }
-        	final Button newItemButton = new Button(this);
-            newItemButton.setLayoutParams(new ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            newItemButton.setText(getResources().getText(R.string.new_set));
-            newItemButton.setBackground(getResources().getDrawable(R.drawable.new_item_selector));
-            newItemButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(ManageTagsActivity.this,
-                            "Clicked " + ((Button) view).getText(),
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
-            
-            dismissableContainer.addView(newItemButton);*/
-        }
-        
 	}
 
 	private int getItemDbID(String in){
