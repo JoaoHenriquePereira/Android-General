@@ -8,6 +8,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 
 /**
  * The Set DAO that navigates the sets db for sets
@@ -57,6 +58,16 @@ public class SetDAO {
 	        + " = " + id, null);
 	}
 
+	public int getLastTagGroupID() {
+		//Shameful hardcode
+		SQLiteStatement stmt;
+		String query = "SELECT MAX("+ DBManager.COLUMN_SETTAGGROUPID +") FROM "
+				+ DBManager.TABLE_SETS;
+			stmt = database
+		            .compileStatement(query);
+		return (int)stmt.simpleQueryForLong();
+	}
+	
 	public List<SetModel> getAllSets() {
 		List<SetModel> sets = new ArrayList<SetModel>();
 
@@ -74,11 +85,35 @@ public class SetDAO {
 		cursor.close();
 		return sets;
 	}
+	
+	public List<SetModel> getAllSetsWithTags() {
+		List<SetModel> sets = new ArrayList<SetModel>();
+
+		final String q = "SELECT * FROM "+ DBManager.TABLE_SETS +" a " +
+				"INNER JOIN "+DBManager.TABLE_TAGGROUP+" b " +
+				"ON a."+DBManager.COLUMN_SETTAGGROUPID+"=b."+DBManager.COLUMN_TAGGROUP_SET_ID +
+				" GROUP BY "+DBManager.COLUMN_SETNAME;
+
+		Cursor cursor = database.rawQuery(q, null);
+		
+		cursor.moveToFirst();
+	    while (!cursor.isAfterLast()) {
+	    	SetModel set = cursorToSet(cursor);
+	    	sets.add(set);
+	    	cursor.moveToNext();
+	    }
+		
+	    // make sure to close the cursor
+		cursor.close();
+		
+		return sets;
+	}
 
 	private SetModel cursorToSet(Cursor cursor) {
 		SetModel set = new SetModel();
 		set.setId(cursor.getLong(0));
 		set.setSetName(cursor.getString(1));
+		set.setSetTagGroupId(cursor.getInt(2));
 		return set;
 	}
 }

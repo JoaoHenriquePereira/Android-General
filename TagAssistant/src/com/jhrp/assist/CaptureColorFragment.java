@@ -1,8 +1,5 @@
 package com.jhrp.assist;
 
-
-import java.util.List;
-
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
 import org.opencv.android.LoaderCallbackInterface;
@@ -10,7 +7,6 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
-import org.opencv.core.MatOfPoint;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
@@ -18,26 +14,17 @@ import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 import org.opencv.imgproc.Imgproc;
 
-import com.jhrp.assist.SetsFragment.OnDataPass;
 import com.jhrp.assist.blob.ColorBlobDetector;
 import com.jhrp.assist.object.CaptureBundle;
-import com.jhrp.assist.object.InterBundle;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.View.OnTouchListener;
-import android.widget.Toast;
 
 import android.support.v4.app.Fragment;
 
@@ -53,7 +40,6 @@ public class CaptureColorFragment extends Fragment implements OnTouchListener, C
 
     private OnCaptureColor mCallback;
     
-    private boolean              mIsColorSelected = false;
     private Mat                  mRgba;
     private Scalar               mBlobColorRgba;
     private Scalar               mBlobColorHsv;
@@ -98,11 +84,8 @@ public class CaptureColorFragment extends Fragment implements OnTouchListener, C
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)  {
 		    	
 		    	final View v = inflater.inflate(R.layout.capturefrag_view, container, false);
-    	
-    	//getActivity().requestWindowFeature(Window.FEATURE_NO_TITLE);
-    	//getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        mOpenCvCameraView = (CameraBridgeViewBase) v.findViewById(R.id.frag_surface_view);
+		mOpenCvCameraView = (CameraBridgeViewBase) v.findViewById(R.id.frag_surface_view);
         mOpenCvCameraView.setCvCameraViewListener(this);
         
         return v;
@@ -219,8 +202,6 @@ public class CaptureColorFragment extends Fragment implements OnTouchListener, C
 	@Override
 	public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
 		mRgba = inputFrame.rgba();
-		
-		
 		return mRgba;
 	}
 

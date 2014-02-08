@@ -1,16 +1,10 @@
 package com.jhrp.assist;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import com.jhrp.assist.SetsFragment.OnDataPass;
-import com.jhrp.assist.db.SetDAO;
-import com.jhrp.assist.db.SetModel;
 import com.jhrp.assist.db.TagGroupDAO;
 import com.jhrp.assist.db.TagGroupModel;
-import com.jhrp.assist.object.InterBundle;
 import com.jhrp.assist.ui.SwipeDismissListViewTouchListener;
 import com.jhrp.assist.ui.TagAdapter;
 
@@ -21,12 +15,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.support.v4.app.ListFragment;
 
 /**
@@ -42,8 +34,7 @@ public class TagsFragment extends ListFragment {
 	private OnDataPass mCallback;
 	
 	//List objects
-	private TagAdapter mAdapter;
-	private List<String> mList; 
+	private TagAdapter mAdapter; 
 	private List<TagGroupModel> mTags;
 	private List<String> items;
 	
@@ -53,7 +44,6 @@ public class TagsFragment extends ListFragment {
 	private TextView fragTitle;
 	
 	//DB Objects
-	private final SetDAO mSetDAO = ManageTagsActivity.getmSetDAO();
     private final TagGroupDAO mTagGroupDAO = ManageTagsActivity.getmTagGroupDAO();
 
 	
@@ -81,8 +71,7 @@ public class TagsFragment extends ListFragment {
 
 	    dismissableContainer = (ViewGroup) getView().findViewById(R.id.dismissable_container);
 
-        mTags = mTagGroupDAO.getAllTagGroups();
-
+        mTags = mTagGroupDAO.getAllTagGroupsByID(getArguments().getLong("settgid"));
         /**
          * It might be useful to have the ids with the string in case you
          * have sets/tags with same name for some reason 
@@ -98,9 +87,6 @@ public class TagsFragment extends ListFragment {
         setListAdapter(mAdapter);
         
         ListView listView = getListView();
-        // Create a ListView-specific touch listener. ListViews are given special treatment because
-        // by default they handle touches for their list items... i.e. they're in charge of drawing
-        // the pressed state (the list selector), handling list item clicks, etc.
         SwipeDismissListViewTouchListener touchListener =
                 new SwipeDismissListViewTouchListener(
                         listView,
@@ -113,13 +99,15 @@ public class TagsFragment extends ListFragment {
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                /*	mTagGroupDAO.deleteTagGroup(mTags.get(
-                                			getItemDbID(mAdapter.getItem(position))));*/
+                                	/*mTagGroupDAO.deleteTagGroup(mTags.get(
+                                			mAdapter.getItem(position).getId()));*/
+                                			
+                                	mTagGroupDAO.deleteTagGroup(mTags.get((int)mAdapter.getItemId(position)));
                                 	mAdapter.remove(mAdapter.getItem(position));
                                 }
                                 mAdapter.notifyDataSetChanged();
                             }
-                        });
+        });
         listView.setOnTouchListener(touchListener);
         // Setting this scroll listener is required to ensure that during ListView scrolling,
         // we don't look for swipes.
@@ -159,67 +147,7 @@ public class TagsFragment extends ListFragment {
         
         dismissableContainer.addView(newItemButton);
         
-        if(items.size() != 0){ //We have sets
-        	/*for (int i = 0; i < mSets.size(); i++) {
-                final Button dismissableButton = new Button(this);
-                dismissableButton.setLayoutParams(new ViewGroup.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                dismissableButton.setText("Button " + (i + 1));
-                dismissableButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Toast.makeText(ManageTagsActivity.this,
-                                "Clicked " + ((Button) view).getText(),
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
-                // Create a generic swipe-to-dismiss touch listener.
-                dismissableButton.setOnTouchListener(new SwipeDismissTouchListener(
-                        dismissableButton,
-                        null,
-                        new SwipeDismissTouchListener.DismissCallbacks() {
-                            @Override
-                            public boolean canDismiss(Object token) {
-                                return true;
-                            }
-
-                            @Override
-                            public void onDismiss(View view, Object token) {
-                                dismissableContainer.removeView(dismissableButton);
-                            }
-                        }));
-                dismissableContainer.addView(dismissableButton);
-            }
-        	final Button newItemButton = new Button(this);
-            newItemButton.setLayoutParams(new ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            newItemButton.setText(getResources().getText(R.string.new_set));
-            newItemButton.setBackground(getResources().getDrawable(R.drawable.new_item_selector));
-            newItemButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(ManageTagsActivity.this,
-                            "Clicked " + ((Button) view).getText(),
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
-            
-            dismissableContainer.addView(newItemButton);*/
-        }
-        
-	}
-
-	private int getItemDbID(String in){
-		int i;
-		String[] s = in.split(" ");
-    	for(i = 0; i < mTags.size(); i++){
-    		TagGroupModel t = mTags.get(i);
-    		if(t.getId() == Integer.valueOf(s[0])){
-    			break;
-    		}
-    	}
-    	return i;
-	}
+    }
 	
 	public interface OnDataPass {
 	    public void onDataPass(String i);
@@ -233,8 +161,7 @@ public class TagsFragment extends ListFragment {
 	
 	@Override
 	public void onListItemClick(ListView listView, View view, int position, long id) {
-		//TODO make it open tag group
-	
+		Log.e("fds",""+mTags.get((int)id).getTagName());
 	}
 
 	public void passData(String i) {

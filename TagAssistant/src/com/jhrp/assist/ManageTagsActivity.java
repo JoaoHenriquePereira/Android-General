@@ -3,7 +3,6 @@ package com.jhrp.assist;
 import java.sql.SQLException;
 
 import com.jhrp.assist.CaptureColorFragment.OnCaptureColor;
-import com.jhrp.assist.SetsFragment.OnDataPass;
 import com.jhrp.assist.db.SetDAO;
 import com.jhrp.assist.db.TagGroupDAO;
 import com.jhrp.assist.object.CaptureBundle;
@@ -19,15 +18,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-/**TODO
- * 
- * Add 2 listviews: 1 for sets, 1 for colors of sets tags
- * 		"Add set" last item on set listview
- * 		"Add tag" last item on tags listview
- * 		Slide left or right delete
- *   	Short click configure color
- *   	Long click change tag name
- */
 public class ManageTagsActivity extends FragmentActivity implements SetsFragment.OnDataPass, TagsFragment.OnDataPass,OnCaptureColor {
 	private static final String TAG = "ManageTagsActivity";
 	
@@ -50,7 +40,6 @@ public class ManageTagsActivity extends FragmentActivity implements SetsFragment
 	private boolean fromCapture = false;
 	private String mNewTag;
 	
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +55,6 @@ public class ManageTagsActivity extends FragmentActivity implements SetsFragment
 			mSetDAO.open();
 			mTagGroupDAO.open();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
@@ -96,9 +84,6 @@ public class ManageTagsActivity extends FragmentActivity implements SetsFragment
             }
         });
 
-        //TODO
-        //this.deleteDatabase("sets.db");
-        
         mSetsFragment = new SetsFragment();
         
         FragmentTransaction ft = fragManager.beginTransaction();
@@ -210,7 +195,6 @@ public class ManageTagsActivity extends FragmentActivity implements SetsFragment
 			mSetDAO.open();
 			mTagGroupDAO.open();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -223,9 +207,5 @@ public class ManageTagsActivity extends FragmentActivity implements SetsFragment
 	@Override
 	public void onDestroy() {
 	    super.onDestroy();
-	    //mSetDAO.close();
-		//mTagGroupDAO.close();
 	}
-
-	
 }

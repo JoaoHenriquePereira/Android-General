@@ -1,9 +1,6 @@
 package com.jhrp.assist.object;
 
-import org.opencv.core.Mat;
 import org.opencv.core.Scalar;
-
-import com.jhrp.assist.blob.ColorBlobDetector;
 
 /**
  * Object passed between Capture fragment and its' manager activity

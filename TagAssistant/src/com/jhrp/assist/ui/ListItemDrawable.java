@@ -15,7 +15,6 @@ import android.view.View;
 
 public class ListItemDrawable extends View {
     private Paint paint = new Paint();
-    private Color fillColor;
 
     public ListItemDrawable(Context context) {
         super(context);            

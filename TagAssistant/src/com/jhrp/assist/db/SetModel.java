@@ -10,7 +10,7 @@ package com.jhrp.assist.db;
 public class SetModel {
 	private long id;
 	private String setName;
-	private long setTagGroupId; 
+	private int setTagGroupId; 
 	
 	public long getId() {
 		return id;
@@ -28,11 +28,11 @@ public class SetModel {
 		this.setName = setName;
 	}
 
-	public long getSetTagGroupId() {
+	public int getSetTagGroupId() {
 		return setTagGroupId;
 	}
 
-	public void setSetTagGroupId(long setTagGroupId) {
+	public void setSetTagGroupId(int setTagGroupId) {
 		this.setTagGroupId = setTagGroupId;
 	}
 } 

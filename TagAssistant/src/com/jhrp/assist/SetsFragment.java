@@ -73,16 +73,7 @@ public class SetsFragment extends ListFragment {
 
         dismissableContainer = (ViewGroup) getView().findViewById(R.id.dismissable_container);
 
-        
-        /*try {
-			mSetDAO.open();
-			mTagGroupDAO.open();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
         mSets = mSetDAO.getAllSets();
-        
         /**
          * It might be useful to have the ids with the string in case you
          * have sets/tags with same name for some reason 
@@ -99,9 +90,6 @@ public class SetsFragment extends ListFragment {
         setListAdapter(mAdapter);
         
         ListView listView = getListView();
-        // Create a ListView-specific touch listener. ListViews are given special treatment because
-        // by default they handle touches for their list items... i.e. they're in charge of drawing
-        // the pressed state (the list selector), handling list item clicks, etc.
         SwipeDismissListViewTouchListener touchListener =
                 new SwipeDismissListViewTouchListener(
                         listView,
@@ -114,8 +102,11 @@ public class SetsFragment extends ListFragment {
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
+                                	mTagGroupDAO.deleteTagGroupBySetId(mSets.get(
+                                			getItemDbID(mAdapter.getItem(position))).getSetTagGroupId());
                                 	mSetDAO.deleteSet(mSets.get(
                                 			getItemDbID(mAdapter.getItem(position))));
+                             
                                 	mAdapter.remove(mAdapter.getItem(position));
                                 }
                                 mAdapter.notifyDataSetChanged();
@@ -227,7 +218,9 @@ public class SetsFragment extends ListFragment {
 	}
 
 	private void updateList(){
-		SetModel insertedSet = mSetDAO.createSet(newEdit.getText().toString(), mTagGroupDAO.getLastTagGroupID());
+		int t = mSetDAO.getLastTagGroupID();
+		t++;
+		SetModel insertedSet = mSetDAO.createSet(newEdit.getText().toString(), t);
         mSets = mSetDAO.getAllSets();
         /**
          * It might be useful to have the ids with the string in case you
@@ -239,12 +232,11 @@ public class SetsFragment extends ListFragment {
 	
 	@Override
 	public void onListItemClick(ListView listView, View view, int position, long id) {
-		//TODO make it open tag group
 		InterBundle t = new InterBundle();
 		t.setState(1);
 		t.setClickedItem((int) id);
-		t.setClickedItemTGId(mSets.get((int)id).getSetTagGroupId());
-		t.setClickedItemName(mSets.get((int)id).getSetName());
+		t.setClickedItemTGId(mSets.get((int) id).getSetTagGroupId());
+		t.setClickedItemName(mSets.get((int) id).getSetName());
 		passData(t);
 	}
 

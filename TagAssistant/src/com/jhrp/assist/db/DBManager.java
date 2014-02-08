@@ -33,10 +33,10 @@ public class DBManager extends SQLiteOpenHelper {
 
 	// Database creation sql statement
 	private static final String DATABASE_CREATE_SETS = "create table "
-			+ TABLE_SETS + "(" + COLUMN_SETS_ID
-			+ " integer primary key autoincrement, " + COLUMN_SETNAME
-			+ " text not null, " + COLUMN_SETTAGGROUPID
-			+ " integer not null);"; 
+			+ TABLE_SETS + "(" 
+			+ COLUMN_SETS_ID + " integer primary key autoincrement, " 
+			+ COLUMN_SETNAME + " text not null, " 
+			+ COLUMN_SETTAGGROUPID + " integer not null);"; 
 
 	private static final String DATABASE_CREATE_TAGGROUP = " create table " 
 			+ TABLE_TAGGROUP + "(" 

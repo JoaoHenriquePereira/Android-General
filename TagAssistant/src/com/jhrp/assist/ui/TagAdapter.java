@@ -6,42 +6,32 @@ import java.util.List;
 import org.opencv.core.Scalar;
 
 import com.jhrp.assist.R;
-import com.jhrp.assist.R.id;
-import com.jhrp.assist.R.layout;
 import com.jhrp.assist.db.TagGroupModel;
 import com.jhrp.assist.utils.Utils;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
- *	JHP 08/08/2013
- *	This class maps the information on the listview.
- *	TODO make expandable boxes for comment
+ * This class maps the information on the listview.
+ * 
+ * @author João Pereira
+ * @e-mail joaohrpereira@gmail.com
  */
 
-public class TagAdapter extends ArrayAdapter<TagGroupModel>
-{
+
+public class TagAdapter extends ArrayAdapter<TagGroupModel> {
 	private static final String TAG="TagAdapter";
-	private ArrayList<TagGroupModel> objects;
-	private Context context;
-	private long id;
-	//private String tagName;
-	//private byte[] tagColor;
 	
+	private ArrayList<TagGroupModel> objects;
     private ImageView tagColor;
     private TextView tagName;
     
@@ -49,7 +39,6 @@ public class TagAdapter extends ArrayAdapter<TagGroupModel>
 			List<TagGroupModel> objects) {
 		super(context, textViewResourceId, objects);
 		this.objects=(ArrayList<TagGroupModel>) objects;
-		this.context=context;
 	}
 	
 	public View getView(int position, View convertView, ViewGroup parent){
@@ -74,11 +63,6 @@ public class TagAdapter extends ArrayAdapter<TagGroupModel>
 			
 			tagColor.setBackgroundColor(t.getColor());
 			tagName.setText(i.getTagName());
-			
-	       // FeedFragment.mImageFetcher.DisplayImage(i.show.images.poster.w120, obj_poster);
-	       // FeedFragment.mImageFetcher.DisplayImage(i.user.avatar.w80, obj_avatar);
-	       // obj_type.getLayoutParams().height = obj_avatar.getLayoutParams().height;//(int) convertPixelsToDp(obj_avatar.getLayoutParams().height,(Activity)context);
-			//obj_type.getLayoutParams().width = obj_avatar.getLayoutParams().width;//(int) convertPixelsToDp(obj_avatar.getLayoutParams().width,(Activity)context);
 		}
 
 		return v;

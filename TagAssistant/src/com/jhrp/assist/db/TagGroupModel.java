@@ -10,7 +10,7 @@ package com.jhrp.assist.db;
 public class TagGroupModel {
 	
 	private long id;
-	private long s_id;
+	private int s_id;
 	private String tagName;
 	private String rgba;
 	private String hsv;
@@ -21,10 +21,10 @@ public class TagGroupModel {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public long getS_id() {
+	public int getS_id() {
 		return s_id;
 	}
-	public void setS_id(long s_id) {
+	public void setS_id(int s_id) {
 		this.s_id = s_id;
 	}
 	public String getTagName() {

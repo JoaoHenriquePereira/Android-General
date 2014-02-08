@@ -12,7 +12,7 @@ public class InterBundle {
 	private int state;
 	private int clickedItem;
 	private String clickedItemName;
-	private long clickedItemTGId;
+	private int clickedItemTGId;
 	
 	public int getState() {
 		return state;
@@ -32,10 +32,10 @@ public class InterBundle {
 	public void setClickedItemName(String clickedItemName) {
 		this.clickedItemName = clickedItemName;
 	}
-	public long getClickedItemTGId() {
+	public int getClickedItemTGId() {
 		return clickedItemTGId;
 	}
-	public void setClickedItemTGId(long clickedItemTGId) {
+	public void setClickedItemTGId(int clickedItemTGId) {
 		this.clickedItemTGId = clickedItemTGId;
 	}
 
