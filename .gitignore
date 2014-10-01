@@ -39,6 +39,12 @@ out/
 .Trashes
 ehthumbs.db
 Thumbs.db
+gen/
+.settings/
+proguard-project.txt
+project.properties
+.classpath
+.project
 
 # Extra Configs #
 #################
