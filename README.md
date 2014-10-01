@@ -1,4 +1,4 @@
-# Android-general
+# Android-Java-general
 
 Android-general is my repo for all the Android related widgets / snippets that I have enjoyed producing in the past, some are incomplete projects or they are simply snippets that I thought I'd might find useful in the future.
 
@@ -31,3 +31,10 @@ This is a Fragment manager snippet that I created when developing another app "T
 WiFlow was my first app released in the Google store. It's a facade algorithm which tried to assist android users connecting to other Wi-Fi networks requiring manual input of credentials every time.
 
 The project was officially plugged off on January 2014 due to lack of time and interest to keep up with the permanent changes occurring with all the networks supported.
+
+## Webcrawler
+
+I always wanted to know more about webcrawlers so I decided to start an AOPIC webcrawler. I will be following some references:
+
+* http://www2003.org/cdrom/papers/refereed/p007/p7-abiteboul.html
+* http://coitweb.uncc.edu/~sakella/courses/cloud09/papers/Mercator.pdf
