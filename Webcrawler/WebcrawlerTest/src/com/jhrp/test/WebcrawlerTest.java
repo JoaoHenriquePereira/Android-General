@@ -33,4 +33,18 @@ public class WebcrawlerTest {
             throw new AssertionError();
         }
     }
+
+    @Test
+    public void computeOPIC(){
+        Document document = null;
+        try {
+            document = Jsoup.connect("http://www.google.com").get();
+        } catch (IOException e) {
+            throw new AssertionError();
+        }
+
+        if (null == document) {
+            throw new AssertionError();
+        }
+    }
 }
