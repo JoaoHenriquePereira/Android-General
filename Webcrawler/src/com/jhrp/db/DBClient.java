@@ -1,4 +1,4 @@
-package com.jhrp.com.jhrp.db;
+package com.jhrp.db;
 
 import java.sql.*;
 
@@ -19,7 +19,6 @@ public class DBClient {
             //String url for simplicity
             String url = "jdbc:mysql://localhost:3306/"+DATABASE_NAME+"?user="+DATABASE_USER+"&password="+DATABASE_PASSWORD;
             conn = DriverManager.getConnection(url);
-            System.out.println("conn built");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -27,12 +26,12 @@ public class DBClient {
         }
     }
 
-    public ResultSet executeFetch(String sql) throws SQLException{
+    protected ResultSet executeFetch(String sql) throws SQLException{
         Statement sta = conn.createStatement();
         return sta.executeQuery(sql);
     }
 
-    public boolean execute(String sql) throws SQLException{
+    protected boolean execute(String sql) throws SQLException{
         Statement sta = conn.createStatement();
         return sta.execute(sql);
     }

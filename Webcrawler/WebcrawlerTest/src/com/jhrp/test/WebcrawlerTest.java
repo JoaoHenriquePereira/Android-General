@@ -1,11 +1,18 @@
 package com.jhrp.test;
 
-import com.jhrp.com.jhrp.db.DBClient;
+import com.jhrp.db.DBClient;
+import com.jhrp.db.model.PageBankModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by joaopereira on 01/10/14.
@@ -15,35 +22,33 @@ public class WebcrawlerTest {
     @Test
     public void checkDBConnection(){
         DBClient t = new DBClient();
-        if (null == t.conn) {
-            throw new AssertionError();
-        }
+        assertNotNull("DB connect test failed", t.conn);
     }
 
     @Test
     public void checkJSOUP(){
-        Document document = null;
+        Document d = null;
         try {
-            document = Jsoup.connect("http://www.google.com").get();
+            d = Jsoup.connect("http://www.google.com").get();
         } catch (IOException e) {
+            e.printStackTrace();
             throw new AssertionError();
         }
 
-        if (null == document) {
-            throw new AssertionError();
-        }
+        assertNotNull("JSoup connect test failed", d);
     }
 
     @Test
-    public void computeOPIC(){
-        Document document = null;
+    public void checkLoadURLFromBank(){
+        PageBankModel t = new PageBankModel();
         try {
-            document = Jsoup.connect("http://www.google.com").get();
-        } catch (IOException e) {
-            throw new AssertionError();
-        }
-
-        if (null == document) {
+            ResultSet r = t.getNextURL();
+            int size = 0;
+            while (r.next())
+                size++;
+            assertTrue("Value returned is different than 1 got " + size + " instead.", 1 == size);
+        } catch (SQLException e) {
+            e.printStackTrace();
             throw new AssertionError();
         }
     }
