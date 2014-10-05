@@ -24,9 +24,8 @@ import java.util.concurrent.*;
 
 public class Webcrawler {
 
-    //TODO No multi-thread for now
-    private static final int _MAX_NUM_WORKERS = 10; /* Thread pool size */
-    private static final int _CONTRACT_NOTICE = 20; /* Time for idle threads to wait before shutting down */
+    private static final int _MAX_NUM_WORKERS = 1; /* Thread pool size */
+    private static final int _CONTRACT_NOTICE = 5; /* Time for idle threads to wait before shutting down */
 
     public String name = "";
 
@@ -54,19 +53,19 @@ public class Webcrawler {
         ThreadFactory threadFactory = Executors.defaultThreadFactory();
 
         ThreadPoolExecutor executorPool = new ThreadPoolExecutor(1,
-                _MAX_NUM_WORKERS,
-                _CONTRACT_NOTICE,
-                TimeUnit.SECONDS,
-                new ArrayBlockingQueue<Runnable>(2),
-                threadFactory,
-                rejectionHandler);
+                                                                _MAX_NUM_WORKERS,
+                                                                _CONTRACT_NOTICE,
+                                                                TimeUnit.SECONDS,
+                                                                new ArrayBlockingQueue<Runnable>(1),
+                                                                threadFactory,
+                                                                rejectionHandler);
 
         //start the monitoring thread
-        WebcrawlerForeman monitor = new WebcrawlerForeman(executorPool, 3);
+        WebcrawlerForeman monitor = new WebcrawlerForeman(executorPool, 5);
         Thread monitorThread = new Thread(monitor);
         monitorThread.start();
         //submit work to the thread pool
-        for(int i=0; i<10; i++){
+        for(int i=0; i<1; i++){ //HARDCODED 1 for the amount of threads to launch
             executorPool.execute(new WebcrawlerWorker(url));
         }
 

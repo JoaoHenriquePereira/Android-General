@@ -11,7 +11,7 @@ public class WebcrawlerForeman implements Runnable {
 
     private int seconds;
 
-    private boolean run=true;
+    private boolean run = true;
 
     public WebcrawlerForeman(ThreadPoolExecutor executor, int delay)
     {
@@ -20,7 +20,7 @@ public class WebcrawlerForeman implements Runnable {
     }
 
     public void shutdown(){
-        this.run=false;
+        this.run = false;
     }
 
     @Override

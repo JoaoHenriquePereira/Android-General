@@ -35,7 +35,7 @@ public class WebcrawlerWorker implements Runnable{
             //get all links and recursively call the processPage method
             Elements questions = doc.select("a[href]");
             System.out.println("size "+questions.size());
-            int c =0;
+            int c = 0;
             for(Element link: questions){
                 if(link.attr("href").contains("mit.edu"))
                     //processPage(link.attr("abs:href"));
