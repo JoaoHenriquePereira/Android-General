@@ -11,7 +11,10 @@ public class tPageBankModel extends DBClientAccessor {
 
     private static final String default_columns = "pb_id, url, priority";
 
-    public tPageBankModel(){ this._table = "t_pagebank"; }
+    public tPageBankModel(){
+        this._table = "t_pagebank";
+        this._pkey = "pb_id";
+    }
 
 
 

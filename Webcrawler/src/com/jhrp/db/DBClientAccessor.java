@@ -9,5 +9,6 @@ public class DBClientAccessor extends DBClient {
 
     //TODO proper management of dbclient
     protected String _table = "";
+    protected String _pkey = "";
 
 }
