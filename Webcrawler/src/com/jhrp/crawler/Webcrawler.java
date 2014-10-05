@@ -1,6 +1,6 @@
 package com.jhrp.crawler;
 
-import com.jhrp.db.model.PageBankModel;
+import com.jhrp.db.model.tPageBankModel;
 import com.jhrp.object.HostInformation;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -23,7 +23,7 @@ import java.sql.SQLException;
 public class Webcrawler {
 
     //TODO No multi-thread for now
-    private static final int _NUM_THREADS = 1;
+    private static final int _NUM_WORKERS = 1;
 
     public String name = "";
 
@@ -32,44 +32,7 @@ public class Webcrawler {
     }
 
     public void start(){
-
-        PageBankModel page_bank_model = new PageBankModel();
-        String url = "";
-
-        try{
-            ResultSet rs = page_bank_model.getNextURL();
-            url = rs.getString("url");
-
-
-            processPage(url);
-            HostInformation hi = getHostInformation(url);
-
-
-        } catch (SQLException e){
-            e.printStackTrace();
-            return;
-        } finally {
-            page_bank_model = null;
-            url = "";
-        }
-
-    }
-
-    public static void processPage(String url) throws SQLException, IOException{
-
-        //get useful information
-        Document doc = Jsoup.connect(url).get();
-
-        if(doc.text().contains("research")){
-            System.out.println(url);
-        }
-
-        //get all links and recursively call the processPage method
-        Elements questions = doc.select("a[href]");
-        for(Element link: questions){
-            if(link.attr("href").contains("mit.edu"))
-                processPage(link.attr("abs:href"));
-        }
+        //TODO
 
     }
 

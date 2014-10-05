@@ -1,7 +1,7 @@
 package com.jhrp.test;
 
 import com.jhrp.db.DBClient;
-import com.jhrp.db.model.PageBankModel;
+import com.jhrp.db.model.tPageBankModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Test;
@@ -40,7 +40,7 @@ public class WebcrawlerTest {
 
     @Test
     public void checkLoadURLFromBank(){
-        PageBankModel t = new PageBankModel();
+        tPageBankModel t = new tPageBankModel();
         try {
             ResultSet r = t.getNextURL();
             int size = 0;
