@@ -34,9 +34,9 @@ public class tPageModelTest {
     @Test
     public void checkInsertNewPage(){
         tPageModel t = new tPageModel();
-        String name = "supercoolwebsite.com";
-        String url = "";
-        String host = "";
+        String name = "supercooltestwebsite.com";
+        String url = "/test";
+        String host = "supercooltestwebsite.com";
         Timestamp last_update = now;
         Timestamp last_visit = now;
         int n_visit = 1;
@@ -49,7 +49,7 @@ public class tPageModelTest {
 
             assertFalse("Insert failed on t_page.", r_pid < 1);
 
-            t.deleteLastPageTest(r_pid); //TODO Shall I be paranoid enough to test if a delete changed more than it should? ahah, no.
+            t.deleteLastPageTest(r_pid); //Question: Shall I be paranoid enough to test if a delete changed more than it should? ahah, no.
         } catch (SQLException e) {
             e.printStackTrace();
             throw new AssertionError();
@@ -58,8 +58,69 @@ public class tPageModelTest {
 
     @Test
     public void checkUpdatePage(){
+        tPageModel t = new tPageModel();
+        String name = "supercooltestwebsite.com";
+        String url = "/test";
+        String host = "supercooltestwebsite.com";
+        Timestamp last_update = now;
+        Timestamp last_visit = now;
+        int n_visit = 1;
+        int priority = 5;
 
+        /*try {
+            ResultSet r = t.insertNewPage(name, url, host, last_update, last_visit, n_visit, priority);
+            r.next();
+            int r_pid = r.getInt(1);
+
+            assertFalse("Insert failed on t_page.", r_pid < 1);
+
+            ResultSet c = t.updatePage(name, url, host, last_update, last_visit, n_visit, priority);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new AssertionError();
+        }*/
     }
 
+    @Test
+    public void checkArchivePage(){
+        tPageModel t = new tPageModel();
+        String name = "supercooltestwebsite.com_1";
+        String url = "/test_1";
+        String host = "supercooltestwebsite.com_1";
+        Timestamp last_update = now;
+        Timestamp last_visit = now;
+        int n_visit = 1;
+        int priority = 5;
+
+        String name2 = "supercooltestwebsite.com_2";
+        String url2 = "/test_2";
+        String host2 = "supercooltestwebsite.com_2";
+        Timestamp last_update2 = now;
+        Timestamp last_visit2 = now;
+        int n_visit2 = 1;
+        int priority2 = 10;
+
+        String name3 = "supercooltestwebsite.com_3";
+        String url3 = "/test_3";
+        String host3 = "supercooltestwebsite.com_3";
+        Timestamp last_update3 = now;
+        Timestamp last_visit3 = now;
+        int n_visit3 = 1;
+        int priority3 = 10;
+
+        try {
+            ResultSet r = t.insertNewPage(name, url, host, last_update, last_visit, n_visit, priority);
+            r = t.insertNewPage(name2, url2, host2, last_update2, last_visit2, n_visit2, priority2);
+            r = t.insertNewPage(name3, url3, host3, last_update3, last_visit3, n_visit3, priority3);
+
+            assertTrue("Archiving failed, the number of records updated between tables was different.", t.archivePages(10));
+            //TODO clear up the data
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new AssertionError();
+        }
+    }
 
 }

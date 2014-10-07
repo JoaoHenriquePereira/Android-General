@@ -40,18 +40,42 @@ public class tPageModel extends DBClientAccessor {
         return t.getGeneratedKeys();
     }
 
-    public ResultSet updatePage() throws SQLException {
-        PreparedStatement t = this.conn.prepareStatement("SELECT url FROM " + _table + " ORDER BY priority DESC LIMIT 1");
-        return t.executeQuery();
+    public ResultSet updatePage(String name, //TODO finish, defined by business (not sure what we need to update exactly yet)
+        String url,
+        String host,
+        Timestamp last_update,
+        Timestamp last_visit,
+        int n_visit,
+        int priority) throws SQLException {
+
+        PreparedStatement t = this.conn.prepareStatement("UPDATE " + _table + " (" + insert_columns + ") VALUES (?,?,?,?,?,?,?)");
+        t.setString(1, name);
+        t.setString(2, url);
+        t.setString(3, host);
+        t.setTimestamp(4, last_update);
+        t.setTimestamp(5, last_visit);
+        t.setInt(6, n_visit);
+        t.setInt(7, priority);
+        t.executeUpdate();
+        return t.getGeneratedKeys();
     }
 
     /**
      * AKA move old records to archivePage to hasten insert process
      * @batch
      */
-    public ResultSet archivePage() throws SQLException {
-        PreparedStatement t = this.conn.prepareStatement("SELECT url FROM " + _table + " ORDER BY priority DESC LIMIT 1");
-        return t.executeQuery();
+    public boolean archivePages(int priority) throws SQLException {
+        PreparedStatement t = this.conn.prepareStatement("INSERT INTO " + getStorageTableName() +
+                " SELECT * FROM " + _table + " WHERE priority = ?");
+        t.setInt(1, priority);
+        t.executeUpdate();
+
+        int tt = t.getUpdateCount();
+
+        t = this.conn.prepareStatement("DELETE FROM " + _table + " WHERE priority = ?");
+        t.setInt(1, priority);
+        t.executeUpdate();
+        return t.getUpdateCount() == tt;
     }
 
     /**

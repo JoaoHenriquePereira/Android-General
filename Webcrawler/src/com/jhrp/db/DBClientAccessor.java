@@ -11,4 +11,16 @@ public class DBClientAccessor extends DBClient {
     protected String _table = "";
     protected String _pkey = "";
 
+    protected String getTableName(){
+        return _table;
+    }
+
+    public String getPKey(){
+        return _pkey;
+    }
+
+    public String getStorageTableName(){
+        return _table.replaceFirst("t_","s_");
+    }
+
 }
