@@ -1,5 +1,6 @@
 package com.jhrp.test.db.model;
 
+import com.jhrp.db.model.sPageModel;
 import com.jhrp.db.model.tPageBankModel;
 import com.jhrp.db.model.tPageModel;
 import org.junit.Before;
@@ -83,7 +84,7 @@ public class tPageModelTest {
     }
 
     @Test
-    public void checkArchivePage(){
+    public void checkArchivePage(){ //TODO must check page links and save them as well
         tPageModel t = new tPageModel();
         String name = "supercooltestwebsite.com_1";
         String url = "/test_1";
@@ -110,12 +111,24 @@ public class tPageModelTest {
         int priority3 = 10;
 
         try {
+
             ResultSet r = t.insertNewPage(name, url, host, last_update, last_visit, n_visit, priority);
-            r = t.insertNewPage(name2, url2, host2, last_update2, last_visit2, n_visit2, priority2);
-            r = t.insertNewPage(name3, url3, host3, last_update3, last_visit3, n_visit3, priority3);
+            ResultSet r2 = t.insertNewPage(name2, url2, host2, last_update2, last_visit2, n_visit2, priority2);
+            ResultSet r3 = t.insertNewPage(name3, url3, host3, last_update3, last_visit3, n_visit3, priority3);
 
             assertTrue("Archiving failed, the number of records updated between tables was different.", t.archivePages(10));
-            //TODO clear up the data
+
+            r.next();
+            int r_pid = r.getInt(1);
+            r2.next();
+            int r_pid2 = r2.getInt(1);
+            r3.next();
+            int r_pid3 = r3.getInt(1);
+
+            t.deleteLastPageTest(r_pid);
+            sPageModel s = new sPageModel();
+            s.deleteLastPageTest(r_pid2);
+            s.deleteLastPageTest(r_pid3);
 
         } catch (SQLException e) {
             e.printStackTrace();

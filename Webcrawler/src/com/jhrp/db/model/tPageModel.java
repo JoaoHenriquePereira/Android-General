@@ -60,6 +60,12 @@ public class tPageModel extends DBClientAccessor {
         return t.getGeneratedKeys();
     }
 
+    public ResultSet getPageById(int p_id) throws SQLException {
+        PreparedStatement t = this.conn.prepareStatement("SELECT * FROM " + _table + " WHERE " + _pkey + " = (?)");
+        t.setInt(1, p_id);
+        return t.executeQuery();
+    }
+
     /**
      * AKA move old records to archivePage to hasten insert process
      * @batch
@@ -87,5 +93,10 @@ public class tPageModel extends DBClientAccessor {
         PreparedStatement t = this.conn.prepareStatement("DELETE FROM " + _table + " WHERE " + _pkey + " = ?");
         t.setInt(1, p_id);
         return t.executeUpdate();
+    }
+
+    public ResultSet getLastPKey() throws SQLException {
+        PreparedStatement t = this.conn.prepareStatement("SELECT * FROM " + _table + " ORDER BY " + _pkey + " DESC LIMIT 1");
+        return t.executeQuery();
     }
 }

@@ -39,4 +39,15 @@ public class sPageModel extends DBClientAccessor {
         t.executeUpdate();
         return t.getGeneratedKeys();
     }
+
+    /**
+     *
+     * @Test
+     */
+
+    public int deleteLastPageTest(int p_id) throws SQLException {
+        PreparedStatement t = this.conn.prepareStatement("DELETE FROM " + _table + " WHERE " + _pkey + " = ?");
+        t.setInt(1, p_id);
+        return t.executeUpdate();
+    }
 }
