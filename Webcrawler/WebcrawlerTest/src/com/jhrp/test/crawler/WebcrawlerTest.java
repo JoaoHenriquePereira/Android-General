@@ -1,7 +1,9 @@
 package com.jhrp.test.crawler;
 
+import com.jhrp.crawler.Webcrawler;
 import com.jhrp.db.DBClient;
 import com.jhrp.db.model.tPageBankModel;
+import com.jhrp.object.HostInformation;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Ignore;
@@ -39,5 +41,11 @@ public class WebcrawlerTest {
         assertNotNull("JSoup connect test failed", d);
     }
 
+    @Test
+    public void checkGetHostInformation(){
+        Webcrawler t = new Webcrawler();
+        HostInformation tt = t.getHostInformation("http://www.imgur.com");
+
+    }
 
 }

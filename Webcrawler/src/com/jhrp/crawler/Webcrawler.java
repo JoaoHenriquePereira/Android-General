@@ -29,6 +29,8 @@ public class Webcrawler {
 
     public String name = "";
 
+    public Webcrawler() {}
+
     public Webcrawler(String name) {
         this.name = name;
     }
@@ -74,7 +76,7 @@ public class Webcrawler {
 
     }
 
-    private HostInformation getHostInformation( String url ){
+    public HostInformation getHostInformation( String url ){
         HostInformation hi = new HostInformation();
 
         return hi;
