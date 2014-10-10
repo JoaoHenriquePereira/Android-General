@@ -38,3 +38,6 @@ I always wanted to know more about webcrawlers so I decided to start an AOPIC we
 
 * http://www2003.org/cdrom/papers/refereed/p007/p7-abiteboul.html
 * http://coitweb.uncc.edu/~sakella/courses/cloud09/papers/Mercator.pdf
+ 
+The project is being developed with java with jdbc driver and a mysql database. For testing there is a submodule inside the directory with junit tests.
+
