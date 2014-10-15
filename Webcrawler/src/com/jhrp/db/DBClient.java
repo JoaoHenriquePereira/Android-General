@@ -15,6 +15,7 @@ public class DBClient {
 
     public DBClient(){
         try {
+            //Everything simple and no dependency injection for now
             Class.forName("com.mysql.jdbc.Driver");
             //String url for simplicity
             String url = "jdbc:mysql://localhost:3306/"+DATABASE_NAME+"?user="+DATABASE_USER+"&password="+DATABASE_PASSWORD;
@@ -24,16 +25,6 @@ public class DBClient {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    protected ResultSet executeFetch(String sql) throws SQLException{
-        Statement sta = conn.createStatement();
-        return sta.executeQuery(sql);
-    }
-
-    protected boolean execute(String sql) throws SQLException{
-        Statement sta = conn.createStatement();
-        return sta.execute(sql);
     }
 
     @Override

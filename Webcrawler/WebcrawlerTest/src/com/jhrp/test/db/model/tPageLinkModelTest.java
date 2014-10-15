@@ -91,6 +91,7 @@ public class tPageLinkModelTest {
         }
     }
 
+    //Shall this test exist? Aren't we repeating ourselves, must check
     @Test
     public void checkUpdatePageLink(){
         tPageLinkModel t = new tPageLinkModel();

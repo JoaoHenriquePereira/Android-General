@@ -57,6 +57,7 @@ public class tPageModelTest {
         }
     }
 
+    //Shall this test exist? Aren't we repeating ourselves, must check
     @Test
     public void checkUpdatePage(){
         tPageModel t = new tPageModel();
