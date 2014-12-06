@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/wiflow_background"
+    android:orientation="vertical" >
+    
+    <ScrollView
+        android:id="@+id/scroll_main"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+		<LinearLayout
+		    android:id="@+id/mainlinear"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            
+            <LinearLayout
+                android:id="@+id/adslayout"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical" >
+	        </LinearLayout>
+	        
+	        <RelativeLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical" >
+	
+	            <RelativeLayout
+	                android:id="@+id/rlmain_header"
+	                android:layout_width="fill_parent"
+	                android:layout_height="80dp"
+	                android:layout_alignParentLeft="true"
+	                android:layout_marginTop="30dp"
+	                android:layout_alignParentTop="true"
+	                android:orientation="horizontal" >
+<!-- 	                android:background="@layout/header_gradient" -->
+	               
+	
+	                <TextView
+	                    android:id="@+id/main_header"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_alignParentLeft="true"
+	                    android:layout_centerVertical="true"
+	                    android:layout_marginLeft="130dp"
+	                    android:gravity="right"
+	                    android:text="@string/main_label"
+	                    android:textColor="@color/main_title_txt"
+	                    android:textSize="60sp"
+	                    android:textStyle="bold" />
+	
+	                <Button
+	                    android:id="@+id/settings_button"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_alignParentRight="true"
+	                    android:layout_centerVertical="true"
+	                    android:gravity="center"
+	                    android:layout_marginRight="130dp"
+	                    android:background="@drawable/ic_settings"/>
+	
+	                <Button
+	                    android:id="@+id/wifi_button"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_toLeftOf="@id/settings_button"
+	                    android:layout_centerVertical="true"
+	                    android:gravity="center"
+	                    android:layout_marginRight="30dp"
+	                    android:background="@drawable/wifi_on"/>
+	            </RelativeLayout>
+	
+	            <RelativeLayout
+	                android:id="@+id/rlmain_body"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_below="@+id/rlmain_header"
+	                android:layout_centerHorizontal="true"
+	                android:layout_marginTop="30dp"
+	                android:gravity="center" >
+	
+	                <FrameLayout
+	                    android:id="@+id/llmain_body_status"
+	                    android:layout_width="520dp"
+	                    android:layout_height="200dp"
+	                    android:layout_centerInParent="true"
+	                    android:background="@drawable/ic_network"
+	                    android:gravity="center" >
+					 <TextView
+	                        android:id="@+id/status_textview"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:layout_margin="10dp"
+	                        android:layout_gravity="center|center"
+	                        android:textSize="30sp"
+	                        android:textStyle="bold" />
+
+	                    <ImageView
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:background="@drawable/refreshsmall"
+	                        android:layout_gravity="top|right"
+	                        android:layout_marginRight="2dp"
+	                        android:layout_marginTop="2dp"
+	                        android:contentDescription="@string/refresh_desc" />
+
+	                </FrameLayout>         
+	            </RelativeLayout>
+	            
+	            <RelativeLayout 
+	                android:id="@+id/rlservice_button"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_below="@+id/rlmain_body"
+	                android:layout_centerHorizontal="true"
+	                android:layout_marginTop="30dp"
+	                android:gravity="center" >
+	                
+	                <ToggleButton
+		                android:id="@+id/start_service_button"
+		                android:layout_width="520dp"
+		                android:layout_height="80dp"
+		                android:radius="8dp"
+		                android:gravity="center"
+		                android:layout_marginBottom="10dp"
+				        android:layout_marginTop="10dp"
+				        android:layout_marginLeft="3dp"
+				        android:layout_marginRight="3dp"
+				        android:textSize="20sp"
+		                android:textOn="@string/toggle_turn_on"
+		        		android:textOff="@string/toggle_turn_off"
+		                android:text="@string/start_service_label"/>	                
+	            </RelativeLayout>       
+	        </RelativeLayout>
+	        
+	        <RelativeLayout
+	            android:id="@+id/rlmain_supported_services"
+		        android:layout_width="fill_parent"
+		        android:layout_height="80dp"
+		        android:layout_marginTop="30dp"
+		        android:gravity="center" >
+	            
+	            <View
+			    	android:id="@+id/first_separator"
+					android:layout_height="2dip"
+					android:layout_width="fill_parent"
+					android:layout_margin="15dp"
+					android:background="@color/main_separator" />
+	            
+	            <TextView
+	                android:id="@+id/supported_header"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_below="@+id/first_separator"
+	                android:layout_marginLeft="3dp"
+	                android:gravity="left"
+	                android:text="@string/supported_label"
+	                android:textColor="@color/main_separator_title"
+	                android:textSize="30sp"
+	                android:textStyle="bold" />
+
+<!-- 	            <Button -->
+<!-- 	                android:id="@+id/newservice_button" -->
+<!-- 	                android:layout_width="wrap_content" -->
+<!-- 	                android:layout_height="wrap_content" -->
+<!-- 	                android:layout_margin="5dp" -->
+<!-- 	                android:layout_alignRight="@+id/first_separator" -->
+<!-- 	                android:layout_below="@+id/first_separator" -->
+<!-- 	                android:gravity="center"  -->
+<!-- 	                android:background="@drawable/ic_about"/> -->
+	        </RelativeLayout>
+	        	
+		    <RelativeLayout
+		        android:id="@+id/rlmain_body_network1"
+		        android:layout_width="fill_parent"
+		        android:layout_height="100dp"
+		        android:background="@drawable/ic_panel"
+		        android:gravity="center" 
+		        android:layout_marginTop="30dp"
+		        android:layout_marginBottom="3dp"
+		        android:layout_marginLeft="3dp"
+		        android:layout_marginRight="3dp">    
+		
+		        <Button
+		            android:id="@+id/configure1_button"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignParentRight="true"
+		            android:layout_centerVertical="true"
+		            android:layout_marginRight="19dp"
+		            android:background="@drawable/next"
+		            android:gravity="center" />
+		
+		        <TextView
+		            android:id="@+id/fon_textview"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignParentLeft="true"
+		            android:layout_centerVertical="true"
+		            android:layout_marginLeft="20dp"
+		            android:text="@string/fon_label"
+		            android:textColor="@color/main_grey"
+		            android:textSize="30sp"
+		            android:textStyle="bold" />
+		    </RelativeLayout>
+
+<!-- 		    <RelativeLayout -->
+<!-- 		        android:id="@+id/rlmain_body_network3" -->
+<!-- 		        android:layout_width="fill_parent" -->
+<!-- 		        android:layout_height="50dp" -->
+<!-- 		        android:layout_marginTop="3dp" -->
+<!-- 		        android:layout_marginBottom="3dp" -->
+<!-- 		        android:layout_marginLeft="3dp" -->
+<!-- 		        android:layout_marginRight="3dp" -->
+<!-- 		        android:background="@drawable/ic_panel" -->
+<!-- 		        android:gravity="center" > -->
+		
+<!-- 		        <Button -->
+<!-- 		            android:id="@+id/configure3_button" -->
+<!-- 		            android:layout_width="wrap_content" -->
+<!-- 		            android:layout_height="wrap_content" -->
+<!-- 		            android:layout_alignParentRight="true" -->
+<!-- 		            android:layout_centerVertical="true" -->
+<!-- 		            android:layout_marginRight="19dp" -->
+<!-- 		            android:background="@drawable/next" -->
+<!-- 		            android:gravity="center" /> -->
+		
+<!-- 		        <TextView -->
+<!-- 		            android:id="@+id/boingo_textview" -->
+<!-- 		            android:layout_width="wrap_content" -->
+<!-- 		            android:layout_height="wrap_content" -->
+<!-- 		            android:layout_alignParentLeft="true" -->
+<!-- 		            android:layout_centerVertical="true" -->
+<!-- 		            android:layout_marginLeft="20dp" -->
+<!-- 		            android:text="@string/boingo_label" -->
+<!-- 		            android:textColor="@color/main_grey" -->
+<!-- 		            android:textSize="20sp" -->
+<!-- 		            android:textStyle="bold" /> -->
+<!-- 		    </RelativeLayout> -->
+		    
+		    <RelativeLayout
+		        android:id="@+id/rlmain_body_network2"
+		        android:layout_width="fill_parent"
+		        android:layout_height="100dp"
+		        android:layout_marginTop="10dp"
+		        android:layout_marginBottom="10dp"
+		        android:layout_marginLeft="3dp"
+		        android:layout_marginRight="3dp"
+		        android:background="@drawable/ic_panel"
+		        android:gravity="center" >
+		
+		        <Button
+		            android:id="@+id/configure2_button"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignParentRight="true"
+		            android:layout_centerVertical="true"
+		            android:layout_marginRight="19dp"
+		            android:background="@drawable/next"
+		            android:gravity="center" />
+		
+		        <TextView
+		            android:id="@+id/wifipt_textview"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignParentLeft="true"
+		            android:layout_centerVertical="true"
+		            android:layout_marginLeft="20dp"
+		            android:text="@string/wifipt_label"
+		            android:textColor="@color/main_grey"
+		            android:textSize="30sp"
+		            android:textStyle="bold" />
+		    </RelativeLayout>
+		    
+<!-- 		    <TextView -->
+<!-- 		        android:id="@+id/service_textview" -->
+<!-- 		        android:layout_width="wrap_content" -->
+<!-- 		        android:layout_height="wrap_content" -->
+<!-- 		        android:layout_marginLeft="3dp" -->
+<!-- 		        android:text="@string/service_label" -->
+<!-- 		        android:textColor="@color/main_separator_title" -->
+<!-- 		        android:textSize="20sp" -->
+<!-- 		        android:textStyle="bold" /> -->
+	    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

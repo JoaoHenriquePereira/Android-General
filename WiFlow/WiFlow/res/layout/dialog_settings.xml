@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/main_body"
+	android:orientation="horizontal">
+    
+    <TableLayout
+        android:id="@+id/tl_dialog_settings"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:stretchColumns="0">
+		<TableRow>	
+		    <LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginRight="5dp"
+	        	android:layout_marginLeft="5dp"
+		        android:orientation="vertical">				    
+	    		<TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:gravity="left"
+			        android:text="@string/force_connect_label"
+			        android:textColor="@color/main_green_dark"
+			        android:textSize="20sp"
+			        android:textStyle="bold" />
+	    		<TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:gravity="left"
+			        android:text="@string/force_connect_detail_label"
+			        android:textColor="@color/main_grey"
+			        android:textSize="13sp" />
+    		</LinearLayout>
+			<CheckBox
+		        android:id="@+id/force_connect_chk"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"/>	
+		</TableRow>   
+		<TableRow> 
+		    <LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginRight="5dp"
+	        	android:layout_marginLeft="5dp"
+		        android:orientation="vertical">				    
+	    		<TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:gravity="left"
+			        android:text="@string/notification_label"
+			        android:textColor="@color/main_green_dark"
+			        android:textSize="20sp"
+			        android:textStyle="bold" />
+	    		<TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:gravity="left"
+			        android:text="@string/notification_detail_label"
+			        android:textColor="@color/main_grey"
+			        android:textSize="13sp" />
+    		</LinearLayout>
+			<CheckBox
+		        android:id="@+id/notification_chk"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"/>
+		</TableRow>
+		<TableRow> 
+		    <LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginRight="5dp"
+	        	android:layout_marginLeft="5dp"
+		        android:orientation="vertical">				    
+	    		<TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:gravity="left"
+			        android:text="@string/ringtone_label"
+			        android:textColor="@color/main_green_dark"
+			        android:textSize="20sp"
+			        android:textStyle="bold" />
+	    		<TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:gravity="left"
+			        android:text="@string/ringtone_detail_label"
+			        android:textColor="@color/main_grey"
+			        android:textSize="13sp" />
+    		</LinearLayout>
+			<CheckBox
+		        android:id="@+id/ringtone_chk"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"/>
+		</TableRow>
+		<TableRow> 
+		    <LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginRight="5dp"
+	        	android:layout_marginLeft="5dp"
+		        android:layout_height="fill_parent"
+		        android:orientation="vertical">				    
+	    		<TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:gravity="left"
+			        android:text="@string/vibrate_label"
+			        android:textColor="@color/main_green_dark"
+			        android:textSize="20sp"
+			        android:textStyle="bold" />
+	    		<TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:gravity="left"
+			        android:text="@string/vibrate_detail_label"
+			        android:textColor="@color/main_grey"
+			        android:textSize="13sp" />
+    		</LinearLayout>
+			<CheckBox
+		        android:id="@+id/vibrate_chk"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"/>
+		</TableRow>
+	</TableLayout>
+	
+	<TableLayout
+	    android:layout_below="@id/tl_dialog_settings"
+		android:layout_width="fill_parent"
+		android:layout_marginTop="10dp"
+		android:layout_height="wrap_content"
+		android:stretchColumns="0,1">
+		<TableRow>					    
+			<Button
+		        android:id="@+id/back_button"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:text="@string/back_label" />	
+		   	<Button
+		        android:id="@+id/ok_button"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:text="@android:string/ok" />
+		</TableRow>   
+	</TableLayout>
+</RelativeLayout>	

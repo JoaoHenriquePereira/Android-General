@@ -1,0 +1,22 @@
+
+    <resources>
+        <color name="main_green">#66CC66</color>
+        <color name="main_title_txt">#FFFFFF</color>
+        <color name="main_body">#000000</color>
+        <color name="light_azure">#F0FFF0</color>
+        <color name="main_green_border">#66CC66</color>
+        <color name="main_green_dark">#478E47</color>
+        <color name="main_body_txt">#372C24</color>
+        <color name="main_grey">#787878</color>
+        <color name="dark_grey">#383838</color>
+        <color name="main_red">#FF0000</color>
+        <color name="black">#000000</color>
+        <color name="light_grey">#b8b8b8</color>
+        <color name="main_separator">#478E47</color>
+        <color name="main_border">#478E47</color>
+        <color name="main_separator_title">#787878</color>
+        <color name="about_text_color">#FFFFFF</color>
+        <color name="main_txt_shadow">#131313</color>
+        <color name="drop_shadow_start">#ee383838</color>
+        <color name="drop_shadow_end">#99f0f0f0</color>
+    </resources>
