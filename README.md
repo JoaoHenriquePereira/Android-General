@@ -1,4 +1,4 @@
-# Android-Java-general
+# android-java-general
 
 Android-general is my repo for all the Android related widgets / snippets that I have enjoyed producing in the past, some are incomplete projects or they are simply snippets that I thought I'd might find useful in the future.
 
